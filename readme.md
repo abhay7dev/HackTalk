@@ -17,6 +17,4 @@ Changes include:
 
 If you have anything else to suggest, or bugs to report, [please share them with us](https://hacktalk.epicgamer007.repl.co/question-0).
 
-[**Hope y'all enjoy, and stay safe! ;)**](https://hacktalk.epicgamer007.repl.co/)
-
-### *PS: Do any of you have any good links to learn how to use Firebase with NodeJS?- 007*
+[**Hope y'all enjoy, and stay safe! ;)**](https://hacktalk.epicgamer007.repl.co/
