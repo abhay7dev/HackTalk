@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+
+/* dark color scheme */
+:root {
+	--darkblue: rgb(35, 40, 65);
+	--lightblue: rgb(50, 50, 78);
+	--brightblue: rgb(66, 61, 91);
+	--light: rgb(223, 217, 221);
+	--dark: rgb(33, 39, 35);
+}
+
+/* light color scheme */
+/* @media (prefers-color-scheme: light) {
+
+	:root {
+		--darkblue: rgb(201, 226, 231);
+		--lightblue: rgb(178, 216, 216);
+		--brightblue: rgb(165, 195, 190);
+		--light: rgb(33, 39, 35);
+		--dark: rgb(223, 217, 221);
+	}
+} */
+
+::selection {
+	background-color: var(--light);
+	color: var(--darkblue);
+}
+
+* {
+	outline: none !important; /* stop yucky ugly outlines. yes outline ugly */
+}
+
+body {
+	font-family: Inconsolata, Verdana, monospace;
+	background-color: var(--darkblue);
+	color: var(--light);
+	text-align: left;
+	margin: 0px;
+	padding: 0px;
+}
+
+body > :not(nav) {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+a {
+	color: var(--light);
+}
+
+section {
+	margin-bottom: 16px;
+}
+
+nav {
+	width: calc(100% - 16px);
+	padding: 8px;
+	background-color: var(--lightblue);
+	text-align: left;
+	margin-bottom: 16px;
+}
+
+nav + h1 {
+	text-align: center;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+hr[light] {
+	border-color: var(--brightblue);
+}
+
+.inline {
+	display: inline;
+}
+
+.center {
+	text-align: center;
+}
+
+.fright {
+	margin-left: auto;
+	display: block;
+}
+
+.fitct {
+	width: fit-content;
+}
+
+.hidden {
+	display: none;
+}
+
+.profilepic {
+	float: left;
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+}
+
+body .profilepic + h3,
+body .profilepic + h2 {
+	float: left;
+	height: fit-content;
+	margin-top: 16px;
+	transform: translateY(-50%);
+	margin-left: 8px;
+}
+
+.sline {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.sline > :not(:first-child) {
+	margin: 0px;
+	margin-left: 8px;
+}
+
+summary,
+summary * {
+	cursor: pointer;
+}
+
+details[open] > summary {
+	margin-bottom: 16px;
+}
+
+nav > a:first-child {
+	font-weight: bold;
+	cursor: pointer;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 1.2em;
+}
+
+nav > :last-child {
+	float: right;
+	background-color: var(--darkblue);
+	border-radius: 8px;
+	padding: 8px;
+	transition: background-color 100ms ease-in-out;
+}
+
+nav > :last-child:hover {
+	background-color: var(--brightblue);
+}
+
+nav * {
+	cursor: pointer;
+	display: inline-block;
+	background-color: transparent;
+	margin: 0px;
+	padding: 8px;
+	text-decoration: transparent;
+}
+
+a.button,
+button,
+input[type="submit"] {
+	width: fit-content;
+	text-decoration: transparent;
+	color: var(--light);
+	background-color: var(--lightblue);
+	border: none;
+	border-radius: 8px;
+	padding: 8px 24px !important;
+	text-align: center;
+	cursor: pointer;
+	margin-top: 8px;
+}
+
+/*
+:is(button, a.button, input[type="submit"]):is(:hover, :active) {}
+*/
+button:hover,
+button:active,
+a.button:hover,
+a.button:active,
+input[type="submit"]:hover,
+input[type="submit"]:active {
+	background-color: var(--brightblue);
+}
+
+textarea,
+input[type="text"] {
+	background-color: var(--lightblue);
+	border: 2px solid var(--lightblue);
+	border-radius: 8px;
+	padding: 8px;
+	color: var(--light);
+	resize: vertical;
+	width: calc(100% - 20px);
+}
+
+textarea:focus,
+input[type="text"]:focus {
+	border-color: var(--light);
+}
+
+#messages a, #notifications a {
+	background-color: transparent;
+	text-decoration: transparent;
+}
+
+#messages a > .question, #notifications a > .notification {
+	overflow-x: hidden;
+}
+
+#messages a > .question > *, #notifications a > .notification > * {
+	white-space: nowrap;
+	margin: 0px;
+}
+
+li {
+	line-height: 1.5;
+}
+
+.question, .answer, .notification {
+	margin-top: 16px;
+	padding: 16px;
+	border-radius: 16px;
+	background-color: var(--lightblue);
+}
+
+a > .question:hover, a > .notification:hover {
+	background-color: var(--brightblue);
+}
+
+.answer > *,
+.answer h1,
+.answer h2,
+.answer h3,
+.answer input[type="submit"] {
+	margin: 0px;
+}
+
+.question > p, .notification > p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.moderator::after {
+	content: "🛡";
+	margin-left: 16px;
+	font-weight: 100;
+	display: inline-block;
+}
+
+.moderator:hover::after {
+	content: "🛡 Moderator";
+}

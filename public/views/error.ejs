@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HackTalk | Error <%= errorCode %></title>
+        <link rel="stylesheet" href="/styles/style.css" />
+		<link rel="icon" type="image/png" href="/images/winters-favicon.png" />
+	</head>
+	<body class="center">
+		<nav>
+			<a href="/" target="_self">HackTalk</a>
+			<a href="/profile">Profile</a>
+			<a href="/profile#questions">Questions</a>
+			<a href="/rules">Rules</a>
+            <a href="/question-0">Feedback</a>
+			<a href="/ask">Ask question</a>
+		</nav>
+		<h1><%= errorCode %></h1>
+		<p>An error occurred...</p>
+		<% if (errorCode.toString() === "403") { %>
+			<p>If you came from <a href="https://HackTalk--epicgamer007.repl.co">https://HackTalk--epicgamer007.repl.co</a>, try using <a href="https://HackTalk.epicgamer007.repl.co/">this link</a> instead.</p>
+		<% } %>
+		<a href="/">Home</a>
+	</body>
+</html>

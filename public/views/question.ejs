@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HackTalk | Question #<%= id %></title>
+		<link rel="stylesheet" href="/styles/style.css" />
+		<link rel="icon" type="image/png" href="/images/winters-favicon.png" />
+	</head>
+	<body data-poster="<%- author.username %>">
+		<nav>
+			<a href="/" target="_self">HackTalk</a>
+			<a href="/profile">Profile</a>
+			<a href="/profile#questions">Questions</a>
+			<a href="/rules">Rules</a>
+            <a href="/question-0">Feedback</a>
+			<a href="/ask">Ask question</a>
+		</nav>
+		<header>
+			<h1 class="inline">Question #<%= id %></h1>
+			<% if (admin) { %>
+			<form action="/delete/<%- id %>" method="POST" class="inline">
+				<input type="submit" value="Delete question" />
+			</form>
+			<% } %>
+		</header>
+		<h2 id="author" <%- author.isModerator ? 'class="moderator"' : "" %>><%= author.username %></h2>
+		<div id="message">
+			<%- body %>
+		</div>
+		<hr />
+		<h2>Answers</h2>
+		<details>
+			<summary><h3 class="inline">Submit an answer</h3></summary>
+			<form action="/answer-<%- id %>" method="post">
+				<textarea rows="8" name="answer" placeholder="Enter answer"></textarea>
+				<br />
+				<div class="fright fitct">
+					<span>Style using <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>!</span>
+					<input type="submit" value="Submit answer" />
+				</div>
+			</form>
+		</details>
+		<section id="answers">
+			<% answers.forEach(({ author: { username, isModerator }, body, id: aid }) => { %>
+				<div class="answer" data-poster="<%- username %>">
+					<header>
+						<div class="inline">
+							<h3 class="inline<%- isModerator ? " moderator" : "" %>"><%= (username == author.username) ? (username + " (OP)") : username %></h3>
+						</div>
+						<% if (admin) { %>
+							<form action="/delete/<%- id %>/<%- aid %>" method="POST" class="inline">
+								<input type="submit" value="Delete answer" />
+							</form>
+						<% } %>
+					</header>
+					<p><%- body %></p>
+				</div>
+			<% }); %>
+		</section>
+	</body>
+</html>

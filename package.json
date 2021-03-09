@@ -1,0 +1,19 @@
+{
+  "name": "HackTalk",
+  "version": "2.0.0",
+  "description": "",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo 'Error: no test specified'; exit 1;"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "*",
+    "express": "*",
+    "markdown-wasm": "*",
+    "replaceall": "*",
+    "replitdb-client": "*"
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HackTalk | Profile</title>
+		<% if (!questions || questions.length < 1) { %>
+			<meta http-equiv="refresh" content="0; URL=/statuspg/500" /> <!-- something has gone horribly wrong. -->
+		<% } %>
+		<link rel="stylesheet" href="/styles/style.css" />
+		<script type="module" src="/scripts/profile.mjs"></script>
+		<link rel="icon" type="image/png" href="/images/winters-favicon.png" />
+	</head>
+	<body>
+		<nav>
+			<a href="/" target="_self">HackTalk</a>
+			<a href="#">Profile</a>
+			<a href="#questions">Questions</a>
+			<a href="/rules">Rules</a>
+            <a href="/question-0">Feedback</a>
+			<a href="/ask">Ask question</a>
+		</nav>
+		<h1 class="center">Hello <%= username %>!</h1>
+		<div id="profile">
+			<header>
+				<h2 class="inline">Profile</h2>
+				<% if (admin) { %>
+					<a class="button" href="/ban">Ban a user</a>
+				<% } %>
+			</header>
+			<h3>Notifications</h3>
+			<div id="notifications">
+				<% for (const notid in notifications) { %>
+					<a href="/notification-<%- notid %>">
+						<div class="notification">
+							<p><%= notifications[notid].body %></p>
+						</div>
+					</a>
+				<% } %>
+				<% if (notifications.length < 1) { %>
+					<p><i>You have no unread notifications.</i></p>
+				<% } %>
+			</div>
+		</div>
+		<div id="questions">
+			<header>
+				<h2 class="inline">Questions</h2>
+				<a class="button" href="/ask">Ask a question</a>
+			</header>
+			<div id="messages">
+				<% questions.forEach(({ id, author, body, answers }) => { %>
+					<a href="/question-<%- id %>">
+						<div class="question">
+							<h3 class="inline"><%= author %></h3>
+							<span><i><%= answers.length %> answer<%= 1 === answers.length ? "" : "s" %></i></span>
+							<p>JavaScript is required for question previews.</p>
+							<template>
+								<div>
+									<%- body %>
+								</div>
+							</template>
+						</div>
+					</a>
+				<% }); %>
+			</div>
+		</div>
+	</body>
+</html>

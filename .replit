@@ -1,0 +1,18 @@
+run="""
+
+clear;
+
+echo 'Starting server';
+
+# npm update;
+
+node \
+--harmony \
+--harmony-nullish \
+--harmony-optional-chaining \
+--unhandled-rejections='strict' \
+app.mjs;
+
+# https://gist.github.com/andrewiggins/68c3165d47769a39eb5ae16e3001d6c6
+
+"""
