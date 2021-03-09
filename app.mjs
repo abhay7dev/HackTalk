@@ -286,6 +286,10 @@ app.get("/profile", async (req, res) => {
 app.post("/question", async (req, res) => {
 	const { question } = req.body;
 
+ 	if(!question || question == null || (''+question).length == 0) {
+      	res.status(403).send("Error, question not found");
+        return;
+    }
 	if (/^\W+$/.test(question)) { // if question is purely made of non-word characters
 		res.sendFile(`${__dirname}/public/static/bad-input.html`);
 	} else {
@@ -346,6 +350,7 @@ app.post("/ban", async (req, res) => {
 });
 
 app.post("/answer-:qid", async (req, res) => {
+  try {
 	const {
 		body: { answer },
 		params: { qid }
@@ -353,15 +358,19 @@ app.post("/answer-:qid", async (req, res) => {
 
 	const author = req.get("X-Replit-User-Name");
 
-	scanPostForPingAndNotify(answer, qid, author);
-
+	scanPostForPingAndNotify(answer, qid, author); // wait im getting something wrong but i know its in this post method
+// The issue is that the await opens a new thread.
+	console.log("hi");
+// then how would we fix this?
 	db
 		.getQuestionData(qid)
-		.then(({ author: qauthor }) =>
-			qauthor !== author
+		.then(({ author: qauthor }) => {
+    	if((''+author).length > 0 && author != null) return null;
+			return qauthor !== author
 				? notify(qauthor, `@${author} responded to your question`, `/question-${qid}`)
 				: null
-		);
+    }
+	);
 
 	if (/^\W+$/.test(answer)) {
 		res.sendFile(`${__dirname}/public/static/bad-input.html`);
@@ -372,6 +381,8 @@ app.post("/answer-:qid", async (req, res) => {
 		});
 
 		res.redirect(`/question-${qid}`);
+	}} catch(err) {
+		res.redirect('/');
 	}
 });
 
