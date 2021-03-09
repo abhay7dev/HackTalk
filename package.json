@@ -12,6 +12,7 @@
   "dependencies": {
     "ejs": "*",
     "express": "*",
+    "express-rate-limit": "^5.2.6",
     "markdown-wasm": "*",
     "replaceall": "*",
     "replitdb-client": "*"

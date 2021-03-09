@@ -45,6 +45,8 @@ import * as db from "./modules/db.mjs";
 
 import parseMarkdown from "./modules/md.mjs";
 
+import rateLimit from "express-rate-limit"
+
 const banUser = async user => {
 	await db.banUser(user);
 
@@ -243,6 +245,11 @@ app.get("/images/:file", ({ params: { file } }, res) => {
 app.get("/statuspg/:code", ({ params: { code: errorCode } }, res) => {
 	res.render(`${__dirname}/public/views/error.ejs`, { errorCode });
 });
+
+app.use(rateLimit({
+	windowMs: 60 * 1000,
+	max: 60
+}));
 
 app.get("/login", (req, res) => {
 	const { next } = req.query;
