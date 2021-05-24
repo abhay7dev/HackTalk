@@ -17,4 +17,4 @@ Changes include:
 
 If you have anything else to suggest, or bugs to report, [please share them with us](https://hacktalk.epicgamer007.repl.co/question-0).
 
-[**Hope y'all enjoy, and stay safe! ;)**](https://hacktalk.epicgamer007.repl.co/
+[**Hope y'all enjoy, and stay safe! ;)**](https://hacktalk.epicgamer007.repl.co/)
