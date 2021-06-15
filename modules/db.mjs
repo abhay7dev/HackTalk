@@ -119,7 +119,7 @@ export const banUser = async (username) => {
 
 export const deleteQuestion = async (qid) => {
 	const deleted = await client.get("deleted");
-	const keys = await client.list(`${qid}__answer__`);
+	const keys = await client.list(`${qid}$REPLI__answer__`);
     
 	await Promise.all([
 		client.delete(`${qid}__message`),

@@ -255,6 +255,7 @@ app.get("/login", (req, res) => {
 	const { next } = req.query;
 
 	if ( req.get("X-Replit-User-Id") ) {
+		console.log(req.cookies)
 		res.redirect(
 			next
 				? decodeURIComponent(next)
